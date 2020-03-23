@@ -1,0 +1,20 @@
+.board {
+  --button-size: 100px;
+  font-family: "Permanent Marker";
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: calc(var(--button-size) * 3);
+  height: calc(var(--button-size) * 3);
+  border: 2px solid black;
+}
+
+.board > button {
+  cursor: pointer;
+  background: white;
+  border: 2px solid black;
+  font-family: inherit;
+  font-size: 2em;
+  width: var(--button-size);
+  height: var(--button-size);
+}

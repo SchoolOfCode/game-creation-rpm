@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker|Walter+Turncoat&display=swap");
+
+.App {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Walter Turncoat";
+  font-size: 2em;
+  min-height: 100vh;
+  background-image: radial-gradient(#0000004d, transparent);
+}

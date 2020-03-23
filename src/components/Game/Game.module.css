@@ -1,0 +1,55 @@
+.displayContainer {
+  margin-top: 2em;
+  text-align: center;
+}
+.displayContainer > button {
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: bold;
+}
+.displayContainer > p {
+  margin-bottom: 0.5em;
+}
+
+.winnerCrown {
+  position: relative;
+}
+
+.winnerCrown::after {
+  content: "";
+  background-image: url(./crown.svg);
+  position: absolute;
+  top: -39px;
+  width: 51px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: -14px;
+  animation: wobble-hor-bottom 0.8s both infinite;
+}
+
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    transform: translateX(-15px) rotate(-12deg);
+  }
+  30% {
+    transform: translateX(7.5px) rotate(12deg);
+  }
+  45% {
+    transform: translateX(-7.5px) rotate(-7.2deg);
+  }
+  60% {
+    transform: translateX(4.5px) rotate(4.8deg);
+  }
+  75% {
+    transform: translateX(-3px) rotate(-2.4deg);
+  }
+}
