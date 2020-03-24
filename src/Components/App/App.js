@@ -7,8 +7,6 @@ function App() {
   const [playerPosition2, setPlayerPosition2] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(true);
 
-  let ongoingGame = true;
-
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
 
@@ -49,12 +47,11 @@ function App() {
 
       //win condition
     } else if (playerPosition >= 100) {
-      console.log("you win!");
-      ongoingGame = false;
-      startAnotherGame();
+      window.confirm("Player 1 Wins! Do you wanna have a rematch?");
+      restartGame();
       // gameOver()
     }
-    //check for LADDERS
+    //check for LADDERS P1
     else if (playerPosition === 5) {
       setPlayerPosition(27);
       console.log("up you go!");
@@ -69,7 +66,7 @@ function App() {
       console.log("up you go!");
     }
 
-    //CHECKS FOR P2
+    //CHECKS FOR SNAKES P2
     if (playerPosition2 === 37) {
       setPlayerPosition2(1);
       console.log("down you go");
@@ -91,12 +88,11 @@ function App() {
 
       //win condition
     } else if (playerPosition2 >= 100) {
-      console.log("you win!");
-      ongoingGame = false;
-      startAnotherGame();
+      window.confirm("Player 2 Wins! Do you wanna have a rematch?");
+      restartGame();
       // gameOver()
     }
-    //check for LADDERS
+    //check for LADDERS P2
     else if (playerPosition2 === 5) {
       setPlayerPosition2(27);
       console.log("up you go!");
@@ -112,15 +108,17 @@ function App() {
     }
   }
 
-  function startAnotherGame() {
-    const anotherOne = window.confirm("Do you wanna have a rematch?");
-    ongoingGame = true;
-    anotherOne && rollDice();
+  function restartGame() {
+    setPlayerPosition(0);
+    setPlayerPosition2(0);
+    setPlayer1Turn(true);
   }
 
   return (
     <div className="App">
       <button onClick={rollDice}>Roll Dice</button>
+      <p>Player 1: Square {playerPosition}</p>
+      <p>Player 2: Square {playerPosition2}</p>
       <Board />
     </div>
   );
