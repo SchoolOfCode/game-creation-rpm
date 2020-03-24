@@ -24,17 +24,17 @@ function App() {
     if (playerPosition === 37) {
       setPlayerPosition(1);
       console.log("down you go");
-    } else if (playerPosition === 42) {
-      setPlayerPosition(22);
+    } else if (playerPosition === 50) {
+      setPlayerPosition(30);
       console.log("down you go");
-    } else if (playerPosition === 59) {
+    } else if (playerPosition === 66) {
       setPlayerPosition(48);
       console.log("down you go");
     } else if (playerPosition === 71) {
-      setPlayerPosition(33);
+      setPlayerPosition(25);
       console.log("down you go");
     } else if (playerPosition === 85) {
-      setPlayerPosition(54);
+      setPlayerPosition(77);
       console.log("down you go");
     } else if (playerPosition === 99) {
       setPlayerPosition(2);
@@ -49,14 +49,14 @@ function App() {
     else if (playerPosition === 5) {
       setPlayerPosition(27);
       console.log("up you go!");
-    } else if (playerPosition === 14) {
-      setPlayerPosition(44);
+    } else if (playerPosition === 12) {
+      setPlayerPosition(34);
       console.log("up you go!");
     } else if (playerPosition === 43) {
       setPlayerPosition(75);
       console.log("up you go!");
-    } else if (playerPosition === 55) {
-      setPlayerPosition(83);
+    } else if (playerPosition === 73) {
+      setPlayerPosition(93);
       console.log("up you go!");
     }
 
