@@ -5,22 +5,27 @@ import Board from "../Board";
 function App() {
   const [playerPosition, setPlayerPosition] = useState(0);
   const [playerPosition2, setPlayerPosition2] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(false);
+  const [player1Turn, setPlayer1Turn] = useState(true);
 
   let ongoingGame = true;
 
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
+
     if (player1Turn) {
+      console.log(`P1 is on square ${playerPosition}`);
       setPlayerPosition(playerPosition + roll);
-      console.log(playerPosition);
-      console.log(`Rolled ${roll}`);
+      console.log(
+        `P1 rolled ${roll}, they are now on square ${playerPosition + roll}`
+      );
     } else {
+      console.log(`P2 is on square ${playerPosition2}`);
       setPlayerPosition2(playerPosition2 + roll);
-      console.log(playerPosition2);
-      console.log(`Rolled ${roll}`);
-      setPlayer1Turn(!player1Turn);
+      console.log(
+        `P2 rolled ${roll}, they are now on square ${playerPosition2 + roll}`
+      );
     }
+    setPlayer1Turn(!player1Turn);
 
     // check for SNAKES P1
     if (playerPosition === 37) {
@@ -106,114 +111,11 @@ function App() {
       console.log("up you go!");
     }
   }
-  function movePlayer(index) {}
-  const [board, setBoard] = useState([
-    { type: "T1", move: "", index: 1 },
-    { type: "T6", move: "", index: 2 },
-    { type: "-", move: "", index: 3 },
-    { type: "-", move: "", index: 4 },
-    { type: "-", move: "", index: 5 },
-    { type: "-", move: "", index: 6 },
-    { type: "-", move: "", index: 7 },
-    { type: "-", move: "", index: 8 },
-    { type: "-", move: "", index: 9 },
-    { type: "-", move: "", index: 10 },
-    { type: "-", move: "", index: 11 },
-    { type: "-", move: "", index: 12 },
-    { type: "-", move: "", index: 13 },
-    { type: "-", move: "", index: 14 },
-    { type: "-", move: "", index: 15 },
-    { type: "-", move: "", index: 16 },
-    { type: "-", move: "", index: 17 },
-    { type: "-", move: "", index: 18 },
-    { type: "-", move: "", index: 19 },
-    { type: "-", move: "", index: 20 },
-    { type: "-", move: "", index: 21 },
-    { type: "T2", move: "", index: 22 },
-    { type: "-", move: "", index: 23 },
-    { type: "-", move: "", index: 24 },
-    { type: "-", move: "", index: 25 },
-    { type: "-", move: "", index: 26 },
-    { type: "-", move: "", index: 27 },
-    { type: "-", move: "", index: 28 },
-    { type: "-", move: "", index: 29 },
-    { type: "-", move: "", index: 30 },
-    { type: "-", move: "", index: 31 },
-    { type: "-", move: "", index: 32 },
-    { type: "T4", move: "", index: 33 },
-    { type: "-", move: "", index: 34 },
-    { type: "-", move: "", index: 35 },
-    { type: "-", move: "", index: 36 },
-    { type: "S1", move: "", index: 37 },
-    { type: "-", move: "", index: 38 },
-    { type: "-", move: "", index: 39 },
-    { type: "-", move: "", index: 40 },
-    { type: "-", move: "", index: 41 },
-    { type: "S2", move: "", index: 42 },
-    { type: "-", move: "", index: 43 },
-    { type: "-", move: "", index: 44 },
-    { type: "-", move: "", index: 45 },
-    { type: "-", move: "", index: 46 },
-    { type: "-", move: "", index: 47 },
-    { type: "S3", move: "", index: 48 },
-    { type: "-", move: "", index: 49 },
-    { type: "-", move: "", index: 50 },
-    { type: "-", move: "", index: 51 },
-    { type: "-", move: "", index: 52 },
-    { type: "-", move: "", index: 53 },
-    { type: "T5", move: "", index: 54 },
-    { type: "-", move: "", index: 55 },
-    { type: "-", move: "", index: 56 },
-    { type: "-", move: "", index: 57 },
-    { type: "-", move: "", index: 58 },
-    { type: "S3", move: "", index: 59 },
-    { type: "-", move: "", index: 60 },
-    { type: "-", move: "", index: 61 },
-    { type: "-", move: "", index: 62 },
-    { type: "-", move: "", index: 63 },
-    { type: "-", move: "", index: 64 },
-    { type: "-", move: "", index: 65 },
-    { type: "-", move: "", index: 66 },
-    { type: "-", move: "", index: 67 },
-    { type: "-", move: "", index: 68 },
-    { type: "-", move: "", index: 69 },
-    { type: "-", move: "", index: 70 },
-    { type: "S4", move: "", index: 71 },
-    { type: "-", move: "", index: 72 },
-    { type: "-", move: "", index: 73 },
-    { type: "-", move: "", index: 74 },
-    { type: "-", move: "", index: 75 },
-    { type: "-", move: "", index: 76 },
-    { type: "-", move: "", index: 77 },
-    { type: "-", move: "", index: 78 },
-    { type: "-", move: "", index: 79 },
-    { type: "-", move: "", index: 80 },
-    { type: "-", move: "", index: 81 },
-    { type: "-", move: "", index: 82 },
-    { type: "-", move: "", index: 83 },
-    { type: "-", move: "", index: 84 },
-    { type: "S5", move: "", index: 85 },
-    { type: "-", move: "", index: 86 },
-    { type: "-", move: "", index: 87 },
-    { type: "-", move: "", index: 88 },
-    { type: "-", move: "", index: 89 },
-    { type: "-", move: "", index: 90 },
-    { type: "-", move: "", index: 91 },
-    { type: "-", move: "", index: 92 },
-    { type: "-", move: "", index: 93 },
-    { type: "-", move: "", index: 94 },
-    { type: "-", move: "", index: 95 },
-    { type: "-", move: "", index: 96 },
-    { type: "-", move: "", index: 97 },
-    { type: "-", move: "", index: 98 },
-    { type: "S6", move: "", index: 99 },
-    { type: "-", move: "", index: 100 }
-  ]);
 
   function startAnotherGame() {
     const anotherOne = window.confirm("Do you wanna have a rematch?");
     ongoingGame = true;
-    anotherOne();
+    anotherOne && rollDice();
   }
 
   return (
