@@ -73,7 +73,10 @@ function Board() {
       <div class="box">40</div>
       <div class="box1">39</div>
       <div class="box">38</div>
-      <div class="box1">37</div>
+      <div class="box1">
+        37
+        <div className="snakeHead"></div>
+      </div>
       <div class="box">36</div>
       <div class="box1">35</div>
       <div class="box">34</div>
@@ -83,7 +86,10 @@ function Board() {
 
       <div class="box1">21</div>
       <div class="box">22</div>
-      <div class="box1">23</div>
+      <div class="box1">
+        23
+        <div className="snakeBody"></div>
+      </div>
       <div class="box">24</div>
       <div class="box1">25</div>
       <div class="box">26</div>
@@ -93,7 +99,10 @@ function Board() {
       <div class="box">30</div>
 
       <div class="box">20</div>
-      <div class="box1">19</div>
+      <div class="box1">
+        19
+        <div className="snakeBody"></div>
+      </div>
       <div class="box">18</div>
       <div class="box1">17</div>
       <div class="box">16</div>
@@ -103,7 +112,9 @@ function Board() {
       <div class="box">12</div>
       <div class="box1">11</div>
 
-      <div class="box1">1</div>
+      <div class="box1">
+        1<div className="snakeBody"></div>
+      </div>
       <div class="box">2</div>
       <div class="box1">3</div>
       <div class="box">4</div>
