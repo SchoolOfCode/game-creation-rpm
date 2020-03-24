@@ -7,6 +7,8 @@ function App() {
   const [playerPosition2, setPlayerPosition2] = useState(0);
   const [player1Turn, setPlayer1Turn] = useState(false);
 
+  let ongoingGame = true;
+
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
     if (player1Turn) {
@@ -43,6 +45,8 @@ function App() {
       //win condition
     } else if (playerPosition >= 100) {
       console.log("you win!");
+      ongoingGame = false;
+      startAnotherGame();
       // gameOver()
     }
     //check for LADDERS
@@ -83,6 +87,8 @@ function App() {
       //win condition
     } else if (playerPosition2 >= 100) {
       console.log("you win!");
+      ongoingGame = false;
+      startAnotherGame();
       // gameOver()
     }
     //check for LADDERS
@@ -203,6 +209,12 @@ function App() {
     { type: "S6", move: "", index: 99 },
     { type: "-", move: "", index: 100 }
   ]);
+
+  function startAnotherGame() {
+    const anotherOne = window.confirm("Do you wanna have a rematch?");
+    ongoingGame = true;
+    anotherOne();
+  }
 
   return (
     <div className="App">
