@@ -5,18 +5,19 @@ import Board from "../Board";
 function App() {
   const [playerPosition, setPlayerPosition] = useState(0);
   const [playerPosition2, setPlayerPosition2] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(false);
+  const [player1Turn, setPlayer1Turn] = useState(true);
 
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
     if (player1Turn) {
+      console.log(`player 1 rolled ${roll}`);
       setPlayerPosition(playerPosition + roll);
-      console.log(playerPosition);
-      console.log(`Rolled ${roll}`);
-    } else {
+      console.log(`player one is on square ${playerPosition}`);
+      setPlayer1Turn(!player1Turn);
+    } else if (!player1Turn) {
+      console.log(`player 2 rolled ${roll}`);
       setPlayerPosition2(playerPosition2 + roll);
-      console.log(playerPosition2);
-      console.log(`Rolled ${roll}`);
+      console.log(`player two is on square ${playerPosition2}`);
       setPlayer1Turn(!player1Turn);
     }
 
