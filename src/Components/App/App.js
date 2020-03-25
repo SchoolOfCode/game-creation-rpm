@@ -1,23 +1,38 @@
 import React, { useState } from "react";
 import "./App.css";
 import Board from "../Board";
+import Dice from "../Dice/index";
 
 function App() {
   const [playerPosition, setPlayerPosition] = useState(0);
   const [playerPosition2, setPlayerPosition2] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(true);
+
+  const [player1Turn, setPlayer1Turn] = useState(false);
+  const [dice, setDice] = useState(1);
+
 
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
     if (player1Turn) {
       console.log(`player 1 rolled ${roll}`);
       setPlayerPosition(playerPosition + roll);
+
+      setDice(roll);
+      console.log(playerPosition);
+      console.log(`Rolled ${roll}`);
+    } else {
+      setPlayerPosition2(playerPosition2 + roll);
+      setDice(roll);
+      console.log(playerPosition2);
+      console.log(`Rolled ${roll}`);
+
       console.log(`player one is on square ${playerPosition}`);
       setPlayer1Turn(!player1Turn);
     } else if (!player1Turn) {
       console.log(`player 2 rolled ${roll}`);
       setPlayerPosition2(playerPosition2 + roll);
       console.log(`player two is on square ${playerPosition2}`);
+
       setPlayer1Turn(!player1Turn);
     }
 
@@ -209,6 +224,7 @@ function App() {
     <div className="App">
       <button onClick={rollDice}>Roll Dice</button>
       <Board />
+      <Dice dice={dice} />
     </div>
   );
 }
