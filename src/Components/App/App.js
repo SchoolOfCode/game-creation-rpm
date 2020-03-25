@@ -119,11 +119,11 @@ function App() {
 
   return (
     <div className="App">
+      <Dice dice={dice} />
       <button onClick={rollDice}>Roll Dice</button>
       <p>Player 1: Square {playerPosition}</p>
       <p>Player 2: Square {playerPosition2}</p>
       <Board />
-      <Dice dice={dice} />
     </div>
   );
 }

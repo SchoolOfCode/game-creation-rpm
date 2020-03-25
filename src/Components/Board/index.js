@@ -3,7 +3,6 @@ import "./board.css";
 
 function Board() {
   return (
-
     <div class="game-board">
       <div class="box">100</div>
       <div class="box1">
@@ -172,7 +171,6 @@ function Board() {
         <div className="snake2"></div>
       </div>
 
-
       <div className="box">20</div>
       <div className="box1">
         19
@@ -193,7 +191,6 @@ function Board() {
       </div>
       <div class="box1">11</div>
 
-
       <div className="box1">
         1<div className="snakeBody"></div>
       </div>
@@ -211,9 +208,24 @@ function Board() {
       <div class="box">8</div>
       <div class="box1">9</div>
       <div class="box">10</div>
-
     </div>
   );
 }
+
+// const board = Array(100).fill("");
+// const config = { 1: <div className="snakeBody"></div> };
+// function Board({ playerPosition }) {
+//   return (
+//     <div className="game-board">
+//       {board.map((square, i) => (
+//         <div className="box">
+//           {100 - i}
+//           {playerPosition === i && "player"}
+//           {config[i]}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
 
 export default Board;
