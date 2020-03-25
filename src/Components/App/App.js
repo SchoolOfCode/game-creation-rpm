@@ -1,27 +1,48 @@
 import React, { useState } from "react";
 import "./App.css";
 import Board from "../Board";
+import Dice from "../Dice/index";
 
 function App() {
   const [playerPosition, setPlayerPosition] = useState(0);
   const [playerPosition2, setPlayerPosition2] = useState(0);
-  const [player1Turn, setPlayer1Turn] = useState(true);
+
+
+  const [player1Turn, setPlayer1Turn] = useState(false);
+  const [dice, setDice] = useState(1);
+
 
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
 
     if (player1Turn) {
+
       console.log(`P1 is on square ${playerPosition}`);
       setPlayerPosition(playerPosition + roll);
       console.log(
         `P1 rolled ${roll}, they are now on square ${playerPosition + roll}`
       );
+
+
+      setDice(roll);
+
     } else {
       console.log(`P2 is on square ${playerPosition2}`);
       setPlayerPosition2(playerPosition2 + roll);
-      console.log(
-        `P2 rolled ${roll}, they are now on square ${playerPosition2 + roll}`
-      );
+
+      setDice(roll);
+      console.log(playerPosition2);
+      console.log(`Rolled ${roll}`);
+
+      console.log(`player one is on square ${playerPosition}`);
+      setPlayer1Turn(!player1Turn);
+    } else if (!player1Turn) {
+      console.log(`player 2 rolled ${roll}`);
+      setPlayerPosition2(playerPosition2 + roll);
+      console.log(`player two is on square ${playerPosition2}`);
+
+      setPlayer1Turn(!player1Turn);
+
     }
     setPlayer1Turn(!player1Turn);
 
@@ -120,6 +141,7 @@ function App() {
       <p>Player 1: Square {playerPosition}</p>
       <p>Player 2: Square {playerPosition2}</p>
       <Board />
+      <Dice dice={dice} />
     </div>
   );
 }
