@@ -3,6 +3,7 @@ import "./board.css";
 
 function Board() {
   return (
+
     <div class="game-board">
       <div class="box">100</div>
       <div class="box1">
@@ -171,12 +172,14 @@ function Board() {
         <div className="snake2"></div>
       </div>
 
-      <div class="box">20</div>
-      <div class="box1">
+
+      <div className="box">20</div>
+      <div className="box1">
         19
         <div className="snakeBody"></div>
         {/* <div className="snake2"> */}
       </div>
+
       <div class="box">18</div>
       <div class="box1">17</div>
       <div class="box">16</div>
@@ -190,9 +193,11 @@ function Board() {
       </div>
       <div class="box1">11</div>
 
-      <div class="box1">
+
+      <div className="box1">
         1<div className="snakeBody"></div>
       </div>
+
       <div class="box">
         2<div className="snake2" id="longerBit"></div>
       </div>
@@ -206,6 +211,7 @@ function Board() {
       <div class="box">8</div>
       <div class="box1">9</div>
       <div class="box">10</div>
+
     </div>
   );
 }
