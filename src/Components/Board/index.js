@@ -56,12 +56,12 @@ function Board({ playerPosition, playerPosition2 }) {
             const squareNumber = 100 - i * 10 - index;
             return (
               <div className="box">
-                {squareNumber}
+                {squareNumber} <br />
                 {playerPosition === squareNumber && (
-                  <img src={circle} alt="p1 counter" />
+                  <img src={circle} alt="p1 counter" className="counter" />
                 )}
                 {playerPosition2 === squareNumber && (
-                  <img src={circle2} alt="p2 counter" />
+                  <img src={circle2} alt="p2 counter" className="counter" />
                 )}
                 {config[squareNumber]}
               </div>
