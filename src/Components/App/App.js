@@ -49,8 +49,12 @@ function App() {
 
       //win condition
     } else if (playerPosition >= 100) {
-      window.confirm("Player 1 Wins! Do you wanna have a rematch?");
-      restartGame();
+      const x = window.confirm("Player 1 Wins! Do you wanna have a rematch?");
+      if (x === true) {
+        restartGame();
+      } else {
+        console.log("Heres The Board");
+      }
       // gameOver()
     }
     //check for LADDERS P1
@@ -90,8 +94,12 @@ function App() {
 
       //win condition
     } else if (playerPosition2 >= 100) {
-      window.confirm("Player 2 Wins! Do you wanna have a rematch?");
-      restartGame();
+      const x = window.confirm("Player 1 Wins! Do you wanna have a rematch?");
+      if (x === true) {
+        restartGame();
+      } else {
+        console.log("Heres The Board");
+      }
       // gameOver()
     }
     //check for LADDERS P2
