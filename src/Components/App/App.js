@@ -9,6 +9,12 @@ function App() {
   const [player1Turn, setPlayer1Turn] = useState(true);
   const [dice, setDice] = useState(1);
 
+  function restartGame() {
+    setPlayerPosition(0);
+    setPlayerPosition2(0);
+    setPlayer1Turn(true);
+  }
+
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
 
@@ -46,12 +52,6 @@ function App() {
     } else if (playerPosition === 99) {
       setPlayerPosition(2);
       console.log("down you go");
-
-      //win condition
-    } else if (playerPosition >= 100) {
-      window.confirm("Player 1 Wins! Do you wanna have a rematch?");
-      restartGame();
-      // gameOver()
     }
     //check for LADDERS P1
     else if (playerPosition === 5) {
@@ -87,13 +87,8 @@ function App() {
     } else if (playerPosition2 === 99) {
       setPlayerPosition2(2);
       console.log("down you go");
-
-      //win condition
-    } else if (playerPosition2 >= 100) {
-      window.confirm("Player 2 Wins! Do you wanna have a rematch?");
-      restartGame();
-      // gameOver()
     }
+
     //check for LADDERS P2
     else if (playerPosition2 === 5) {
       setPlayerPosition2(27);
@@ -110,10 +105,13 @@ function App() {
     }
   }
 
-  function restartGame() {
-    setPlayerPosition(0);
-    setPlayerPosition2(0);
-    setPlayer1Turn(true);
+  //win condition
+  if (playerPosition2 >= 100) {
+    window.confirm("Player 2 Wins! Do you wanna have a rematch?");
+    restartGame();
+  } else if (playerPosition >= 100) {
+    window.confirm("Player 1 Wins! Do you wanna have a rematch?");
+    restartGame();
   }
 
   return (
