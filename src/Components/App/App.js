@@ -118,14 +118,15 @@ function App() {
 
   return (
     <div className="App">
-
       <h1>Snakes & Ladders</h1>
       <Dice dice={dice} /> <br />
-
       <button onClick={rollDice}>Roll Dice</button>
       <p>Player 1: Square {playerPosition}</p>
       <p>Player 2: Square {playerPosition2}</p>
-      <Board />
+      <Board
+        playerPosition={playerPosition}
+        playerPosition2={playerPosition2}
+      />
     </div>
   );
 }
