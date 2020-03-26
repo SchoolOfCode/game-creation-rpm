@@ -6,8 +6,7 @@ import Dice from "../Dice/index";
 function App() {
   const [playerPosition, setPlayerPosition] = useState(0);
   const [playerPosition2, setPlayerPosition2] = useState(0);
-
-  const [player1Turn, setPlayer1Turn] = useState(false);
+  const [player1Turn, setPlayer1Turn] = useState(true);
   const [dice, setDice] = useState(1);
 
   function rollDice() {
@@ -119,7 +118,7 @@ function App() {
 
   return (
     <div className="App">
-      <Dice dice={dice} />
+      <Dice dice={dice} /> <br />
       <button onClick={rollDice}>Roll Dice</button>
       <p>Player 1: Square {playerPosition}</p>
       <p>Player 2: Square {playerPosition2}</p>

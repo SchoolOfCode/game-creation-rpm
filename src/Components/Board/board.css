@@ -1,14 +1,26 @@
 .game-board {
-  display: grid;
-  grid-template-columns: 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px;
-  grid-template-rows: 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.row {
+  display: flex;
   justify-content: center;
 }
+
+.row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
 .box {
   background-color: #d9d9d9;
   border: 2px solid black;
+  width: 80px;
+  height: 80px;
 }
-.box1 {
+
+.row > .box:nth-child(even) {
   background-color: #69b7cf;
   border: 2px solid black;
 }
