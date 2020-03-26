@@ -119,6 +119,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Snakes & Ladders</h1>
       <Dice dice={dice} />
       <button onClick={rollDice}>Roll Dice</button>
       <p>Player 1: Square {playerPosition}</p>
