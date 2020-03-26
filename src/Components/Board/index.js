@@ -47,6 +47,7 @@ const config = {
 
 function Board({ playerPosition, playerPosition2 }) {
   const circle = require("./circle.svg");
+  const circle2 = require("./circle2.svg");
   return (
     <div className="game-board">
       {board.map((row, i) => (
@@ -56,8 +57,12 @@ function Board({ playerPosition, playerPosition2 }) {
             return (
               <div className="box">
                 {squareNumber}
-                {playerPosition === squareNumber && circle}
-                {playerPosition2 === squareNumber && "player2"}
+                {playerPosition === squareNumber && (
+                  <img src={circle} alt="p1 counter" />
+                )}
+                {playerPosition2 === squareNumber && (
+                  <img src={circle2} alt="p2 counter" />
+                )}
                 {config[squareNumber]}
               </div>
             );

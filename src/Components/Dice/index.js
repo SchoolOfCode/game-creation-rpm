@@ -1,12 +1,7 @@
 import React from "react";
-// import dice1 from "./dice1.svg";
-// import dice2 from "./dice2.svg";
-// import dice3 from "./dice3.svg";
-// import dice4 from "./dice4.svg";
-// import dice5 from "./dice5.svg";
-// import dice6 from "./dice6.svg";
+import "./dice.css";
 
-function Dice({ dice }) {
+function Dice({ dice, onClick }) {
   return (
     <img
       style={{ width: "50px" }}
@@ -29,6 +24,8 @@ function Dice({ dice }) {
         }
       })()}
       alt="dice"
+      onClick={onClick}
+      className="dice"
     />
   );
 }
