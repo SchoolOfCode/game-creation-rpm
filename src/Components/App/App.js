@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Board from "../Board";
 import Dice from "../Dice/index";
@@ -21,55 +21,39 @@ const movements = {
   73: 93
 };
 
+const initialPositions = {
+  playerPosition: 0,
+  playerPosition2: 0
+};
+
 function App() {
-  const [playerPosition, setPlayerPosition] = useState(0);
-  const [playerPosition2, setPlayerPosition2] = useState(0);
+  const [playerPositions, setPlayerPositions] = useState(initialPositions);
   const [player1Turn, setPlayer1Turn] = useState(true);
   const [dice, setDice] = useState(1);
 
   function restartGame() {
-    setPlayerPosition(0);
-    setPlayerPosition2(0);
+    setPlayerPositions(initialPositions);
     setPlayer1Turn(true);
   }
 
   function rollDice() {
     let roll = Math.floor(Math.random() * 6) + 1;
-
-    if (player1Turn) {
-      setPlayerPosition(playerPosition + roll);
-      console.log(`P1 is on square ${playerPosition}`);
-      console.log(
-        `P1 rolled ${roll}, they are now on square ${playerPosition + roll}`
-      );
-      setDice(roll);
-    } else if (!player1Turn) {
-      setPlayerPosition2(playerPosition2 + roll);
-      console.log(`player 2 rolled ${roll}`);
-      console.log(`player two is on square ${playerPosition2}`);
-      setDice(roll);
-    }
-    setPlayer1Turn(!player1Turn);
-
-    setPlayerPosition(movements[playerPosition]);
-    setPlayerPosition2(movements[playerPosition2]);
-    //win condition
-    if (playerPosition >= 100) {
-      const x = window.confirm("Player 1 Wins! Do you wanna have a rematch?");
-      if (x === true) {
-        restartGame();
-      } else {
-        console.log("Heres The Board");
-      }
-    } else if (playerPosition2 >= 100) {
-      const x = window.confirm("Player 2 Wins! Do you wanna have a rematch?");
-      if (x === true) {
-        restartGame();
-      } else {
-        console.log("Heres The Board");
-      }
-    }
+    setDice(roll);
   }
+
+  useEffect(() => {
+    const player = player1Turn ? "playerPosition" : "playerPosition2";
+    const rollToPosition = playerPositions[player] + dice;
+    const finalPosition = movements[rollToPosition] || rollToPosition;
+
+    setPlayerPositions({
+      ...playerPositions,
+      [player]: finalPosition
+    });
+    setPlayer1Turn(!player1Turn);
+  }, [dice]);
+
+  const { playerPosition, playerPosition2 } = playerPositions;
   return (
     <div className="App">
       <h1>Snakes & Ladders</h1>
