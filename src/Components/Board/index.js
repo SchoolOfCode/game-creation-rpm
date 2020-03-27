@@ -48,8 +48,7 @@ const config = {
   99: <div className="snakeHead"></div>
 };
 
-function Board({ playerPosition, playerPosition2, entities}) {
-
+function Board({ playerPosition, playerPosition2, entities }) {
   return (
     <div className="game-board">
       {board.map((row, i) => (

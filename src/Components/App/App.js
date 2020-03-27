@@ -3,11 +3,6 @@ import "./App.css";
 import Board from "../Board";
 import Dice from "../Dice/index";
 
-const entities = [
-  { type: "snake", start: 15, end: 4 },
-  { type: "ladder", start: 10, end: 99 }
-];
-
 const movements = {
   37: 1,
   50: 30,
@@ -46,6 +41,10 @@ function App() {
     const rollToPosition = playerPositions[player] + dice;
     const finalPosition = movements[rollToPosition] || rollToPosition;
 
+    if (finalPosition > 99) {
+      return restartGame();
+    }
+
     setPlayerPositions({
       ...playerPositions,
       [player]: finalPosition
@@ -63,7 +62,7 @@ function App() {
       <Board
         playerPosition={playerPosition}
         playerPosition2={playerPosition2}
-        entities={entities}
+        movements={movements}
       />
     </div>
   );
