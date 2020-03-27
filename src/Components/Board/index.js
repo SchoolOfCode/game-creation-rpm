@@ -1,5 +1,8 @@
 import React from "react";
-import "./board.css";
+import "./Board.css";
+
+import circle from "./circle.svg";
+import circle2 from "./circle2.svg";
 
 const board = Array(10).fill(Array(10).fill(""));
 const config = {
@@ -45,9 +48,8 @@ const config = {
   99: <div className="snakeHead"></div>
 };
 
-function Board({ playerPosition, playerPosition2 }) {
-  const circle = require("./circle.svg");
-  const circle2 = require("./circle2.svg");
+function Board({ playerPosition, playerPosition2, entities}) {
+
   return (
     <div className="game-board">
       {board.map((row, i) => (

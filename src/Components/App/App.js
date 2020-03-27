@@ -3,6 +3,24 @@ import "./App.css";
 import Board from "../Board";
 import Dice from "../Dice/index";
 
+const entities = [
+  { type: "snake", start: 15, end: 4 },
+  { type: "ladder", start: 10, end: 99 }
+];
+
+const movements = {
+  37: 1,
+  50: 30,
+  66: 48,
+  71: 25,
+  85: 77,
+  99: 2,
+  5: 27,
+  12: 34,
+  43: 75,
+  73: 93
+};
+
 function App() {
   const [playerPosition, setPlayerPosition] = useState(0);
   const [playerPosition2, setPlayerPosition2] = useState(0);
@@ -33,101 +51,25 @@ function App() {
     }
     setPlayer1Turn(!player1Turn);
 
-    // check for SNAKES P1
-    if (playerPosition === 37) {
-      setPlayerPosition(1);
-      console.log("down you go");
-    } else if (playerPosition === 50) {
-      setPlayerPosition(30);
-      console.log("down you go");
-    } else if (playerPosition === 66) {
-      setPlayerPosition(48);
-      console.log("down you go");
-    } else if (playerPosition === 71) {
-      setPlayerPosition(25);
-      console.log("down you go");
-    } else if (playerPosition === 85) {
-      setPlayerPosition(77);
-      console.log("down you go");
-    } else if (playerPosition === 99) {
-      setPlayerPosition(2);
-      console.log("down you go");
-
-      //win condition
-    }
-    //check for LADDERS P1
-    else if (playerPosition === 5) {
-      setPlayerPosition(27);
-      console.log("up you go!");
-    } else if (playerPosition === 12) {
-      setPlayerPosition(34);
-      console.log("up you go!");
-    } else if (playerPosition === 43) {
-      setPlayerPosition(75);
-      console.log("up you go!");
-    } else if (playerPosition === 73) {
-      setPlayerPosition(93);
-      console.log("up you go!");
-    }
-
-    //CHECKS FOR SNAKES P2
-    if (playerPosition2 === 37) {
-      setPlayerPosition2(1);
-      console.log("down you go");
-    } else if (playerPosition2 === 42) {
-      setPlayerPosition2(22);
-      console.log("down you go");
-    } else if (playerPosition2 === 59) {
-      setPlayerPosition2(48);
-      console.log("down you go");
-    } else if (playerPosition2 === 71) {
-      setPlayerPosition2(33);
-      console.log("down you go");
-    } else if (playerPosition2 === 85) {
-      setPlayerPosition2(54);
-      console.log("down you go");
-    } else if (playerPosition2 === 99) {
-      setPlayerPosition2(2);
-      console.log("down you go");
-    }
-
-    //check for LADDERS P2
-    else if (playerPosition2 === 5) {
-      setPlayerPosition2(27);
-      console.log("up you go!");
-    } else if (playerPosition2 === 14) {
-      setPlayerPosition2(44);
-      console.log("up you go!");
-    } else if (playerPosition2 === 43) {
-      setPlayerPosition2(75);
-      console.log("up you go!");
-    } else if (playerPosition2 === 55) {
-      setPlayerPosition2(83);
-      console.log("up you go!");
-    } else if (playerPosition > 100) {
-      setPlayerPosition(100);
-    } else if (playerPosition2 > 100) {
-      setPlayerPosition2(100);
+    setPlayerPosition(movements[playerPosition]);
+    setPlayerPosition2(movements[playerPosition2]);
+    //win condition
+    if (playerPosition >= 100) {
+      const x = window.confirm("Player 1 Wins! Do you wanna have a rematch?");
+      if (x === true) {
+        restartGame();
+      } else {
+        console.log("Heres The Board");
+      }
+    } else if (playerPosition2 >= 100) {
+      const x = window.confirm("Player 2 Wins! Do you wanna have a rematch?");
+      if (x === true) {
+        restartGame();
+      } else {
+        console.log("Heres The Board");
+      }
     }
   }
-
-  //win condition
-  if (playerPosition >= 100) {
-    const x = window.confirm("Player 1 Wins! Do you wanna have a rematch?");
-    if (x === true) {
-      restartGame();
-    } else {
-      console.log("Heres The Board");
-    }
-  } else if (playerPosition2 >= 100) {
-    const x = window.confirm("Player 2 Wins! Do you wanna have a rematch?");
-    if (x === true) {
-      restartGame();
-    } else {
-      console.log("Heres The Board");
-    }
-  }
-
   return (
     <div className="App">
       <h1>Snakes & Ladders</h1>
@@ -137,6 +79,7 @@ function App() {
       <Board
         playerPosition={playerPosition}
         playerPosition2={playerPosition2}
+        entities={entities}
       />
     </div>
   );
