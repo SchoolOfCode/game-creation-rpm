@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import io from "socket.io-client";
 import "./App.css";
 import Board from "../Board";
 import Dice from "../Dice/index";
+import Chat from "../Chat/index";
+
+const socket = io("http://localhost:5000");
 
 function App() {
   const [playerPosition, setPlayerPosition] = useState(0);
@@ -138,6 +142,7 @@ function App() {
         playerPosition={playerPosition}
         playerPosition2={playerPosition2}
       />
+      <Chat />
     </div>
   );
 }
